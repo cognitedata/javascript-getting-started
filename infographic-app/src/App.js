@@ -7,30 +7,12 @@ import "./App.css";
 class App extends Component {
   constructor() {
     super();
-    const search = window.location.search.replace("?", "");
     this.state = {
-      tenant: search || null,
       isAuthorized: false
     };
   }
 
-  async componentDidMount() {
-    if (this.state.tenant) {
-      await this.authenticate(this.state.tenant);
-      this.setState({ isAuthorized: true });
-    }
-    // this required to make possible navigation back to login page
-    window.onpopstate = async event => {
-      if (!event.state || !event.state.tenant) {
-        this.setState({
-          tenant: null,
-          isAuthorized: false
-        });
-      }
-    };
-  }
-
-  authenticate = async tenant => {
+  onTenantSelected = async tenant => {
     if (sdk.Login.isPopupWindow()) {
       sdk.Login.popupHandler();
       return;
@@ -42,14 +24,8 @@ class App extends Component {
       redirectUrl: window.location.href,
       errorRedirectUrl: window.location.href
     });
-  };
 
-  onTenantSelected = async tenant => {
-    await this.authenticate(tenant);
-
-    this.setState({ tenant, isAuthorized: true });
-    // direct change of location.search causes re-render and loosing state
-    window.history.pushState({ tenant }, "", `/?${tenant}`);
+    this.setState({ isAuthorized: true });
   };
 
   render() {
