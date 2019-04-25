@@ -1,47 +1,69 @@
 import React, { Component } from "react";
-import { ReactAuthProvider } from "@cognite/react-auth";
 import { TenantSelector } from "@cognite/gearbox";
+import * as sdk from "@cognite/sdk";
 import Layout from "./Layout";
+import "./App.css";
 
 class App extends Component {
   constructor() {
     super();
-    const route = window.location.pathname.replace("/", "");
+    const search = window.location.search.replace("?", "");
     this.state = {
-      tenant: route || null
+      tenant: search || null,
+      isAuthorized: false
     };
   }
 
-  componentDidMount() {
-    window.onpopstate = event => {
-      this.setState({ tenant: (event.state && event.state.tenant) || null });
+  async componentDidMount() {
+    if (this.state.tenant) {
+      await this.authenticate(this.state.tenant);
+      this.setState({ isAuthorized: true });
+    }
+    // this required to make possible navigation back to login page
+    window.onpopstate = async event => {
+      if (!event.state || !event.state.tenant) {
+        this.setState({
+          tenant: null,
+          isAuthorized: false
+        });
+      }
     };
   }
 
-  onTenantSelected = tenant => {
-    this.setState({ tenant });
-    window.history.pushState({ tenant }, "", `/${tenant}`);
+  authenticate = async tenant => {
+    if (sdk.Login.isPopupWindow()) {
+      sdk.Login.popupHandler();
+      return;
+    }
+
+    await sdk.Login.authorize({
+      popup: true,
+      project: tenant,
+      redirectUrl: window.location.href,
+      errorRedirectUrl: window.location.href
+    });
+  };
+
+  onTenantSelected = async tenant => {
+    await this.authenticate(tenant);
+
+    this.setState({ tenant, isAuthorized: true });
+    // direct change of location.search causes re-render and loosing state
+    window.history.pushState({ tenant }, "", `/?${tenant}`);
   };
 
   render() {
-    return (
-      <div>
-        {this.state.tenant ? (
-          <ReactAuthProvider
-            project={this.state.tenant}
-            redirectUrl={window.location.href}
-            errorRedirectUrl={window.location.href}
-            enableTokenCaching
-          >
-            <Layout />
-          </ReactAuthProvider>
-        ) : (
+    return this.state.isAuthorized ? (
+      <Layout />
+    ) : (
+      <div className="login-page-container">
+        <div className="login-container">
           <TenantSelector
             title="Infographic App"
             initialTenant="publicdata"
             onTenantSelected={this.onTenantSelected}
           />
-        )}
+        </div>
       </div>
     );
   }

@@ -875,15 +875,10 @@
     react-sizeme "^2.5.2"
     uuid "^3.3.2"
 
-"@cognite/react-auth@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@cognite/react-auth/-/react-auth-2.1.2.tgz#d6058a0ea19f3d0bf7ada128bde7e852744e0182"
-  integrity sha512-wZ79m8Z+4GAKrDOKEXb9dBYITdeShW5sD+4j31JNgmpHLFzWEVoyWBek2yexEDm4rydt37yY3DNtl+xy9GXq8Q==
-
-"@cognite/sdk@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@cognite/sdk/-/sdk-1.6.0.tgz#5cb3c1a758fe59d91b0fb6d2f31d7cf8d7ff509c"
-  integrity sha512-dn3lwiyfXjPeyjvjBsoQOA5JeJLLX8g0EZc/C6Aqfnuc2GBwk/HCKTJolMTGYE9qZ4ClWp1Ln/QrKIkoH7bTUw==
+"@cognite/sdk@^1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@cognite/sdk/-/sdk-1.7.0.tgz#13e09ec58bf451cb59ca99a35525b2df38ca65c7"
+  integrity sha512-6rUQ3XZXTHFxvJGwm0sGAgRAOwMUtdh53tQyOYry0rJTFVJnB+12hi/qCCH9UT+rVdS0Cdvh9PpsDrT7g8TvnQ==
   dependencies:
     axios "^0.18.0"
     jwt-decode "^2.2.0"
