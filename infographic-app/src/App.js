@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { TenantSelector } from "@cognite/gearbox";
+import { TenantSelector } from "@cognite/gearbox/dist/components/TenantSelector";
 import Layout from "./Layout";
 import { ReactAuthProvider } from "@cognite/react-auth";
 import "./App.css";
@@ -8,7 +8,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      tenant: ''
+      tenant: ""
     };
   }
 

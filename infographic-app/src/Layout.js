@@ -1,19 +1,20 @@
 import React, { Component } from "react";
-import { TimeseriesSearch, SensorOverlay } from "@cognite/gearbox";
+import { TimeseriesSearch } from "@cognite/gearbox/dist/components/TimeseriesSearch";
+import { SensorOverlay } from "@cognite/gearbox/dist/components/SensorOverlay";
 import "./Layout.css";
 
 class Layout extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      timeserieIds: [],
+      timeseriesIds: [],
       isImageLoaded: false
     };
     this.imageRef = React.createRef();
   }
 
-  onTimeserieSelectionChange = timeserieIds => {
-    this.setState({ timeserieIds });
+  onTimeserieSelectionChange = timeseriesIds => {
+    this.setState({ timeseriesIds });
   };
 
   onFileSelected = event => {
@@ -31,7 +32,7 @@ class Layout extends Component {
       <div className="main-layout">
         <div className="left-side">
           <input type="file" onChange={this.onFileSelected} />
-          <SensorOverlay timeserieIds={this.state.timeserieIds}>
+          <SensorOverlay timeseriesIds={this.state.timeseriesIds}>
             <img
               alt=""
               ref={this.imageRef}
