@@ -5,7 +5,7 @@ These guides will help you to start working with [@cognite/cognitesdk-js](https:
 
 | Name                                                                             | Description                                                       | Video guide                                                                                                     |
 | --------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| [Install and fetch data][sdk-intro],<br/>[demo redirect][sdk-auth-redirect], [demo popup][sdk-auth-popup] | An example of a React app which uses SDK to connect<br/> to CDF and fetch data| [![Watch the video](https://img.youtube.com/vi/29Cuv6OhBmA/3.jpg)](https://youtu.be/29Cuv6OhBmA)
+| [Install and fetch data][sdk-intro],<br/> [demo redirect][sdk-auth-redirect], [demo popup][sdk-auth-popup] | An example of a React app which uses SDK to connect to CDF and fetch data| [![Watch the video](https://img.youtube.com/vi/29Cuv6OhBmA/3.jpg)](https://youtu.be/29Cuv6OhBmA)
 
 [sdk-intro]: https://github.com/cognitedata/javascript-getting-started/tree/master/sdk-auth-and-fetch-data
 [sdk-auth-redirect]: https://cognitedata.github.io/javascript-getting-started/sdk-auth-and-fetch-data/auth-with-redirect
