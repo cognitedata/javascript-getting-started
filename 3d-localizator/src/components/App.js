@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TenantSelector } from '@cognite/gearbox';
-import { ReactAuthProvider } from '@cognite/react-auth';
+import { ClientSDKProvider, TenantSelector } from '@cognite/gearbox';
+import { CogniteClient, isLoginPopupWindow, loginPopupHandler, POPUP } from '@cognite/sdk';
 import { Layout } from './Layout';
 
 const LoginWrapper = styled('div')`
@@ -16,40 +16,46 @@ const LoginWrapper = styled('div')`
 `;
 
 class App extends React.Component {
-  constructor() {
-    super();
+  state = {
+    tenant: null,
+  };
+  client = new CogniteClient({appId: 'charting-app-example'});
 
-    this.state = {
-      tenant: '',
-    };
+  componentDidMount() {
+    if (isLoginPopupWindow()) {
+      loginPopupHandler();
+      return;
+    }
   }
 
   onTenantSelected = async tenant => {
+    this.client.loginWithOAuth({
+      project: tenant,
+      onAuthenticate: POPUP,
+    });
+    await this.client.authenticate();
     this.setState({ tenant });
   };
 
-  render() {
-    const { tenant } = this.state;
-
+  renderLoginScreen() {
     return (
-      <ReactAuthProvider
-        project={tenant}
-        redirectUrl={window.location.href}
-        errorRedirectUrl={window.location.href}
-        usePopup={true}
-        loginRenderer={
-          <LoginWrapper>
-            <TenantSelector
-              header={'Type tenant name'}
-              title="3D Localizator"
-              initialTenant="publicdata"
-              onTenantSelected={this.onTenantSelected}
-            />
-          </LoginWrapper>
-        }
-      >
-        <Layout />
-      </ReactAuthProvider>
+      <LoginWrapper>
+        <TenantSelector
+          header={'Type tenant name'}
+          title="3D Localizator"
+          initialTenant="publicdata"
+          onTenantSelected={this.onTenantSelected}
+        />
+      </LoginWrapper>
+    );
+  }
+
+  render() {
+    const isLoggedIn = this.state.tenant !== null;
+    return (
+      <ClientSDKProvider client={this.client}>
+        {isLoggedIn ? <Layout client={this.client}/> : this.renderLoginScreen()}
+      </ClientSDKProvider>
     );
   }
 }

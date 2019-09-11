@@ -2,7 +2,6 @@ import { Button, notification } from 'antd';
 import React from 'react';
 import styled from 'styled-components';
 import { AssetSearch, AssetScanner, Model3DViewer } from '@cognite/gearbox';
-import { ThreeD } from '@cognite/sdk';
 
 const Wrapper = styled('div')`
   display: flex;
@@ -45,19 +44,15 @@ const ActionsWrapper = styled('div')`
 
 export class Layout extends React.Component {
   cache = {};
-
-  constructor() {
-    super();
-
-    this.state = {
-      asset: null,
-      modelID: null,
-      revisionID: null,
-    };
-  }
+  state = {
+    asset: null,
+    modelID: null,
+    revisionID: null,
+  };
 
   async componentDidMount() {
-    const { items: models } = await ThreeD.listModels();
+    const { client } = this.props;
+    const models = await client.models3D.list().autoPagingToArray();
 
     if (!models.length) {
       notification.error({
@@ -69,7 +64,7 @@ export class Layout extends React.Component {
     }
 
     const { id: modelID } = models[0];
-    const { items: revisions } = await ThreeD.listRevisions(modelID);
+    const revisions = await client.revisions3D.list(modelID).autoPagingToArray();
 
     if (!revisions.length) {
       notification.error({
