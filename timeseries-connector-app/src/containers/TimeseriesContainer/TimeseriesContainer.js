@@ -1,6 +1,5 @@
 import React from 'react';
 import { AssetTree, TimeseriesSearch } from '@cognite/gearbox';
-import * as sdk from '@cognite/sdk';
 import styled from 'styled-components';
 import { Button, message, notification } from 'antd';
 
@@ -46,12 +45,19 @@ class TimeseriesContainer extends React.Component {
   };
 
   handleSeriesConnect = async () => {
-    const changes = this.state.timeseriesChecked.map(elem => {
-      return { id: elem, assetId: { set: this.state.assetChecked } };
+    const changes = this.state.timeseriesChecked.map(id => {
+      return {
+        id,
+        update: {
+          assetId: {
+            set: this.state.assetChecked,
+          },
+        },
+      };
     });
 
     if (changes.length) {
-      await sdk.TimeSeries.updateMultiple(changes);
+      await this.props.client.timeseries.update(changes);
 
       //User actions feedback info
       const seriesString = this.state.timeseriesChecked.join(', ');
