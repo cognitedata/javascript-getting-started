@@ -18,13 +18,13 @@ class App extends Component {
     }
   }
 
-  onTenantSelected = async (tenant) => {
+  onTenantSelected = async tenant => {
     this.client.loginWithOAuth({
       project: tenant,
       onAuthenticate: POPUP,
     });
     await this.client.authenticate();
-    this.setState({tenant});
+    this.setState({ tenant });
   };
 
   renderLoginScreen() {

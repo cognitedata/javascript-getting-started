@@ -1,6 +1,6 @@
 import React from 'react';
-import { TenantSelector } from '@cognite/gearbox';
-import { ReactAuthProvider } from '@cognite/react-auth';
+import { ClientSDKProvider, TenantSelector } from '@cognite/gearbox';
+import { CogniteClient, isLoginPopupWindow, loginPopupHandler, POPUP } from '@cognite/sdk';
 import AssetExplorerContainer from '../../containers/AssetExplorerContainer/AssetExplorerContainer';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
@@ -20,34 +20,46 @@ const TenantSelectorContainer = styled.div`
 
 class AssetExplorer extends React.Component {
   state = {
-    tenant: null
+    tenant: null,
   };
+  client = new CogniteClient({ appId: 'asset-explorer-example' });
 
-  handleTenantSelect = async tenant => {
+  componentDidMount() {
+    if (isLoginPopupWindow()) {
+      loginPopupHandler();
+      return;
+    }
+  }
+
+  onTenantSelected = async tenant => {
+    this.client.loginWithOAuth({
+      project: tenant,
+      onAuthenticate: POPUP,
+    });
+    await this.client.authenticate();
     this.setState({ tenant });
   };
 
-  render() {
+  renderLoginScreen() {
     return (
-      <PageContainer>
-        <ReactAuthProvider
-          project={this.state.tenant}
-          redirectUrl={window.location.href}
-          errorRedirectUrl={window.location.href}
-          usePopup={true}
-          loginRenderer={
-            <TenantSelectorContainer>
-              <TenantSelector
-                onTenantSelected={this.handleTenantSelect}
-                initialTenant='publicdata'
-                title='Asset Explorer'
-              />
-            </TenantSelectorContainer>
-          }
-        >
-          <AssetExplorerContainer />
-        </ReactAuthProvider>
-      </PageContainer>
+      <TenantSelectorContainer>
+        <TenantSelector
+          title="Charting App"
+          initialTenant="publicdata"
+          onTenantSelected={this.onTenantSelected}
+        />
+      </TenantSelectorContainer>
+    );
+  }
+
+  render() {
+    const isLoggedIn = this.state.tenant !== null;
+    return (
+      <ClientSDKProvider client={this.client}>
+        <PageContainer>
+          {isLoggedIn ? <AssetExplorerContainer/> : this.renderLoginScreen()}
+        </PageContainer>
+      </ClientSDKProvider>
     );
   }
 }
