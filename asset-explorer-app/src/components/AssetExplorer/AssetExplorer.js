@@ -44,7 +44,7 @@ class AssetExplorer extends React.Component {
     return (
       <TenantSelectorContainer>
         <TenantSelector
-          title="Charting App"
+          title="Asset Explorer app"
           initialTenant="publicdata"
           onTenantSelected={this.onTenantSelected}
         />
