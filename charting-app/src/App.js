@@ -1,37 +1,52 @@
 import React, { Component } from 'react';
-import { TenantSelector } from '@cognite/gearbox';
-import { ReactAuthProvider } from '@cognite/react-auth';
+import { ClientSDKProvider, TenantSelector } from '@cognite/gearbox';
 import 'antd/dist/antd.css';
 import './App.css';
-import Layout from "./Layout";
-
+import { CogniteClient, isLoginPopupWindow, loginPopupHandler, POPUP } from '@cognite/sdk';
+import Layout from './Layout';
 
 class App extends Component {
-  
   state = {
-    tenant: null
+    tenant: null,
+  };
+  client = new CogniteClient({appId: 'charting-app-example'});
+
+  componentDidMount() {
+    if (isLoginPopupWindow()) {
+      loginPopupHandler();
+      return;
+    }
+  }
+
+  onTenantSelected = async (tenant) => {
+    this.client.loginWithOAuth({
+      project: tenant,
+      onAuthenticate: POPUP,
+    });
+    await this.client.authenticate();
+    this.setState({tenant});
   };
 
-  render() {
+  renderLoginScreen() {
     return (
-      <div className="main-layout">
-        <ReactAuthProvider 
-          project={this.state.tenant}
-          redirectUrl={window.location.href}
-          errorRedirectUrl={window.location.href}
-          usePopup
-          loginRenderer={
-            <div className="tenant-selector-container">
-              <TenantSelector
-                title="Charting App"
-                initialTenant="publicdata"
-                onTenantSelected={tenant => this.setState({ tenant })}
-              />
-            </div>
-          }>
-          <Layout />
-        </ReactAuthProvider>
+      <div className="tenant-selector-container">
+        <TenantSelector
+          title="Charting App"
+          initialTenant="publicdata"
+          onTenantSelected={this.onTenantSelected}
+        />
       </div>
+    );
+  }
+
+  render() {
+    const isLoggedIn = this.state.tenant !== null;
+    return (
+      <ClientSDKProvider client={this.client}>
+        <div className="main-layout">
+          {isLoggedIn ? <Layout/> : this.renderLoginScreen()}
+        </div>
+      </ClientSDKProvider>
     );
   }
 }

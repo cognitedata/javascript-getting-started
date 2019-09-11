@@ -1,11 +1,10 @@
-import React, { Component } from "react";
-import { TimeseriesSearch, TimeseriesChart } from "@cognite/gearbox";
-import "./Layout.css";
+import React, { Component } from 'react';
+import { TimeseriesSearch, TimeseriesChart } from '@cognite/gearbox';
+import './Layout.css';
 
 class Layout extends Component {
-  
   state = {
-    timeseriesIds: []
+    timeseriesIds: [],
   }
 
   onTimeserieSelectionChange = timeseriesIds => {
