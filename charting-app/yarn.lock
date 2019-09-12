@@ -843,10 +843,10 @@
   dependencies:
     protobufjs "^6.8.8"
 
-"@cognite/gearbox@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@cognite/gearbox/-/gearbox-1.1.2.tgz#4497f9c1fc76ccff46d16e0441e35fc8e94a3e56"
-  integrity sha512-Xbndii6OB7Zo6b5kqsGO2/ytlMe15CK0FEg3h8Es64zr2sQhzbdelCzdD/ceyip1K4NcI318Ft8rn/SOISvZuA==
+"@cognite/gearbox@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@cognite/gearbox/-/gearbox-1.1.3.tgz#60bd93ac9e84862c3c1199a1b0a7434ecf1d2d7c"
+  integrity sha512-6W/KQ2qrmknpCxRfqF6Ekq6q1atIIBYv7Mt6jD83Hb14M7qc2OQYwJ/iHeS8WlBKOMKw9+BWJK61Rxzwa2VxJg==
   dependencies:
     d3 "^5.9.2"
     lodash "^4.17.11"
