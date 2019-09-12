@@ -1,3 +1,10 @@
+<p align="right">
+  <a href="https://youtu.be/29Cuv6OhBmA">
+    Youtube version<br />
+    <img src="https://img.youtube.com/vi/29Cuv6OhBmA/3.jpg" alt="Cognite JS SDK video guide" title="Watch our video guide" align="right" />
+  </a>
+</p>
+
 ## Introduction to Cognite Javascript SDK
 
 This guide will show you how to create a simple app using [Cognite JavaScript SDK](https://github.com/cognitedata/cognitesdk-js).
