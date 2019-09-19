@@ -50,7 +50,7 @@ async componentDidMount() {
 The `CogniteClient` component nicely packages the complexity of authentication
 against a provider (Google in this case), and making API requests.
 
-![](hello-0.png)
+![](res/hello-0.png)
 
 A reference to this client is stored in the `App` component's state and made available 
 to the children of the `App` component via the `ClientSDKProvider` component from 
@@ -67,9 +67,9 @@ The [Explorer](src/Explorer.js) component utilizes an
 component to display a list of assets from the
 [Open Industrial Data](https://openindustrialdata.com) project.
 
-![](hello-1.png)
+![](res/hello-1.png)
 
-When one of these assets are selected, it's detail are displayed by utilizing an
+When an asset is selected, its details are displayed by utilizing an
 [AssetMeta](https://cognitedata.github.io/gearbox.js/?path=/story/assetmeta--full-description) component.
 
-![](hello-2.png)
+![](res/hello-2.png)

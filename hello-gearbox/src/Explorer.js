@@ -1,7 +1,6 @@
 import React from "react";
 import { AssetTree, AssetMeta } from "@cognite/gearbox";
-import { Button } from "antd";
-import { Col, Row, Layout } from "antd";
+import { Button, Icon, Layout } from "antd";
 import "antd/dist/antd.css";
 
 const { Header, Footer, Content } = Layout;
@@ -20,29 +19,24 @@ class Explorer extends React.Component {
     return (
       <Layout>
         <Header style={{ color: "white", fontSize: "1.4em" }}>
-          <Row>
-            <Col span={18}>
-              {this.state.isTreeVisible
-                ? "All assets"
-                : `Asset #${this.state.selectedAssetID}`}
-            </Col>
-            <Col span={6}>
-              {!this.state.isTreeVisible && (
-                <Button
-                  type="danger"
-                  onClick={() => this.setState({ isTreeVisible: true })}
-                >
-                  Back
-                </Button>
-              )}
-            </Col>
-          </Row>
+          {!this.state.isTreeVisible && (
+            <Button
+              type="danger"
+              onClick={() => this.setState({ isTreeVisible: true })}
+            >
+              <Icon type="left" />
+              Back
+            </Button>
+          )}
+
+          {this.state.isTreeVisible
+            ? "All assets"
+            : `  Asset #${this.state.selectedAssetID}`}
         </Header>
         <Content style={{ padding: "10px" }}>
           {this.state.isTreeVisible && (
             <AssetTree
               onSelect={asset => {
-                console.log(`AssetTree: selected ${asset.key}`);
                 this.setState({
                   selectedAssetID: asset.key,
                   isTreeVisible: false

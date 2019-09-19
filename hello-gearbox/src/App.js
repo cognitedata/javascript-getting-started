@@ -22,9 +22,8 @@ class App extends React.Component {
     });
 
     client.loginWithOAuth({ project: PROJECT_ID });
-    client.authenticate().then(() => {
-      this.setState({ client });
-    });
+    await client.authenticate();
+    this.setState({ client });
   }
 
   render() {
