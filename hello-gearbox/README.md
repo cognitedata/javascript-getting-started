@@ -1,14 +1,18 @@
 # Hello Gearbox
 
-> Introductory example app demonstrating how to access the `Cognite Data Fusion Platform` with the `JavaScript SDK` and the `Cognite Gearbox` component library.
+Introductory example app demonstrating how to access the Cognite [Data Fusion Platform](https://cognite.com/products/cognite-data-fusion) with the [JavaScript SDK](https://github.com/cognitedata/cognitesdk-js) and the [Gearbox](https://github.com/cognitedata/gearbox.js) component library.
 
-Run with:
+From inside the `hello-gearbox` folder:
 
 ```shell
-npm install
+# Install dependencies
+yarn
 
-HTTPS=true npm start
+# Start development server
+yarn start
 ```
+
+Or if **npm** is preferred: `npm install` followed by `npm start`
 
 Default web browser should open automatically at https://localhost:3000
 
@@ -19,10 +23,10 @@ This is a single page app bootstraped with
 
 Following libraries/tools are used:
 
-- [`@cognite/gearbox`](https://github.com/cognitedata/gearbox.js) - React components- styled with Ant Design, for working with the Cognite Data Fusion data model
-- [`@cognite/sdk`](https://github.com/cognitedata/cognitesdk-js) - JavaScript SDK for accessing the Cognite Data Fusion platform
-- [`antd`](https://github.com/ant-design/ant-design) - UI [design language](https://ant.design/docs/spec/introduce) and an implementation of that as a set of [React components](https://ant.design/docs/react/introduce)
-- [`react`](https://github.com/facebook/react) - UI library
+- `@cognite/sdk` - JavaScript SDK for accessing the Cognite Data Fusion platform
+- `@cognite/gearbox` - React components for working with the Cognite Data Fusion data model
+- [antd](https://github.com/ant-design/ant-design) - UI [design language](https://ant.design/docs/spec/introduce) and an implementation of that as a set of [React components](https://ant.design/docs/react/introduce)
+- [react](https://github.com/facebook/react) - UI library
 
 ## Example walkthrough
 
@@ -31,8 +35,8 @@ mounted to browser DOM at the `<div id="root"></div>` element.
 
 Just after getting mounted, the [App](src/App.js) component uses
 [CogniteClient](https://cognitedata.github.io/cognitesdk-js/classes/cogniteclient.html)
-from the [Cognite JavaScript SDK](https://github.com/cognitedata/cognitesdk-js) to establish a connection with the
-[Cognite Data Fusion](https://cognite.com/products/cognite-data-fusion/) platform.
+from the **Cognite JavaScript SDK** to establish a connection with the
+**Cognite Data Fusion** platform.
 
 ```js
 async componentDidMount() {
@@ -41,9 +45,8 @@ async componentDidMount() {
   });
 
   client.loginWithOAuth({ project: "publicdata" });
-  client.authenticate().then(() => {
-    this.setState({ client });
-  });
+  await client.authenticate();
+  this.setState({ client });
 }
 ```
 
@@ -54,7 +57,7 @@ against a provider (Google in this case), and making API requests.
 
 A reference to this client is stored in the `App` component's state and made available 
 to the children of the `App` component via the `ClientSDKProvider` component from 
-[Cognite Gearbox](https://github.com/cognitedata/gearbox.js) component toolkit.
+**Cognite Gearbox** component toolkit.
 
 ```html
 <ClientSDKProvider client={this.state.client}>
