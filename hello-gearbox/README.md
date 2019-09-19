@@ -1,6 +1,6 @@
 # Hello Gearbox
 
-Introductory example app demonstrating how to access the Cognite [Data Fusion Platform](https://docs.cognite.com/) with the [JavaScript SDK](https://www.npmjs.com/package/@cognite/sdk) and the [Gearbox](https://www.npmjs.com/package/@cognite/gearbox) component library.
+Introductory example app demonstrating how to access the [Cognite Data Fusion](https://docs.cognite.com/) with the [JavaScript SDK](https://www.npmjs.com/package/@cognite/sdk) and the [Gearbox](https://www.npmjs.com/package/@cognite/gearbox) component library.
 
 From inside the `hello-gearbox` folder:
 
