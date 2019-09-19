@@ -34,7 +34,7 @@ class Explorer extends React.Component {
             : `  Asset #${this.state.selectedAssetID}`}
         </Header>
         <Content style={{ padding: "10px" }}>
-          {this.state.isTreeVisible && (
+          <div style={{ display: this.state.isTreeVisible ? "block" : "none" }}>
             <AssetTree
               onSelect={asset => {
                 this.setState({
@@ -43,11 +43,11 @@ class Explorer extends React.Component {
                 });
               }}
             />
-          )}
+          </div>
 
-          {!this.state.isTreeVisible && (
+          <div style={{ display: this.state.isTreeVisible ? "none" : "block" }}>
             <AssetMeta assetId={this.state.selectedAssetID} />
-          )}
+          </div>
         </Content>
         <Footer>
           Data from{" "}
