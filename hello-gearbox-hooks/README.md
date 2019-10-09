@@ -2,7 +2,7 @@
 
 Introductory example app demonstrating how to access the [Cognite Data Fusion](https://docs.cognite.com/) with the [JavaScript SDK](https://www.npmjs.com/package/@cognite/sdk) and the [Gearbox](https://www.npmjs.com/package/@cognite/gearbox) component library.
 
-From inside the `hello-gearbox` folder:
+From inside the `hello-gearbox-hooks` folder:
 
 ```shell
 # Install dependencies
@@ -39,15 +39,21 @@ from the **Cognite JavaScript SDK** to establish a connection with the
 **Cognite Data Fusion** platform.
 
 ```js
-async componentDidMount() {
-  const client = new CogniteClient({
-    appId: "hello-cdf-gearboxjs"
-  });
+ const [client, setClient] = React.useState(null)
 
-  client.loginWithOAuth({ project: "publicdata" });
-  await client.authenticate();
-  this.setState({ client });
-}
+  const auth = async (client) => {
+    await client.authenticate();
+    setClient(client);
+  }
+
+  React.useEffect(() => {
+    const client = new CogniteClient({
+      appId: APP_ID
+    });
+
+    client.loginWithOAuth({ project: PROJECT_ID });
+    auth(client);
+  }, [])
 ```
 
 The `CogniteClient` component nicely packages the complexity of authentication
@@ -60,7 +66,7 @@ to the children of the `App` component via the `ClientSDKProvider` component fro
 **Cognite Gearbox** component toolkit.
 
 ```html
-<ClientSDKProvider client={this.state.client}>
+<ClientSDKProvider client={client}>
   <Explorer />
 </ClientSDKProvider>
 ```
