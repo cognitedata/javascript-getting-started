@@ -3,6 +3,7 @@ node_js:
   - "10"
 sudo: false
 before_install:
+  # trigger travis, this PR should fail
   - openssl aes-256-cbc -K $encrypted_50094fda4654_key -iv $encrypted_50094fda4654_iv
     -in gcs-service-account.json.enc -out gcs-service-account.json
     -d
