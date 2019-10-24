@@ -4,7 +4,7 @@ node_js:
 sudo: false
 before_install:
   - |
-      if [[ $TRAVIS_SECURE_ENV_VARS ]]; then
+      if ! [[ $TRAVIS_SECURE_ENV_VARS ]]; then
         openssl aes-256-cbc -K $encrypted_50094fda4654_key -iv $encrypted_50094fda4654_iv \
         -in gcs-service-account.json.enc -out gcs-service-account.json -d
       fi
