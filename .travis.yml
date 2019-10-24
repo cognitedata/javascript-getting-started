@@ -4,7 +4,7 @@ node_js:
 sudo: false
 before_install:
   - |
-      if [ "${TRAVIS_SECURE_ENV_VARS}" = true ]; then
+      if [ "${TRAVIS_SECURE_ENV_VARS}" == "true" ]; then
         openssl aes-256-cbc -K $encrypted_50094fda4654_key -iv $encrypted_50094fda4654_iv \
         -in gcs-service-account.json.enc -out gcs-service-account.json -d
       fi
@@ -14,7 +14,7 @@ install:
 script:
   - ./build.sh
   - |
-      if [ "${TRAVIS_PULL_REQUEST}" = true ] && [ "${TRAVIS_SECURE_ENV_VARS}" = true ] ; then
+      if [ "${TRAVIS_PULL_REQUEST}" == "true" ] && [ "${TRAVIS_SECURE_ENV_VARS}" == "true" ] ; then
         GOOGLE_APPLICATION_CREDENTIALS=gcs-service-account.json preview upload apps "javascript-getting-started/pr-${TRAVIS_PULL_REQUEST}" && \
         curl -H "Authorization: token ${GITHUB_TOKEN}" -X POST \
         -d "{\"body\": \"This apps can now be previewed at the following URL: https://pr-${TRAVIS_PULL_REQUEST}.javascript-getting-started.preview.cogniteapp.com\"}" \
