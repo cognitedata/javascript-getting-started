@@ -3,16 +3,18 @@ node_js:
   - "10"
 sudo: false
 before_install:
-  - openssl aes-256-cbc -K $encrypted_50094fda4654_key -iv $encrypted_50094fda4654_iv
-    -in gcs-service-account.json.enc -out gcs-service-account.json
-    -d
+  - |
+      if ! [[ $TRAVIS_SECURE_ENV_VARS ]]; then
+        openssl aes-256-cbc -K $encrypted_50094fda4654_key -iv $encrypted_50094fda4654_iv \
+        -in gcs-service-account.json.enc -out gcs-service-account.json -d
+      fi
 install:
   - yarn
   - yarn global add @cognite/preview-cli@0.0.6
 script:
   - ./build.sh
   - |
-      if [ "${TRAVIS_PULL_REQUEST}" != "false" ] ; then
+      if [ "${TRAVIS_PULL_REQUEST}" != "false" ] && ["${TRAVIS_SECURE_ENV_VARS}" = "false"] ; then
         GOOGLE_APPLICATION_CREDENTIALS=gcs-service-account.json preview upload apps "javascript-getting-started/pr-${TRAVIS_PULL_REQUEST}" && \
         curl -H "Authorization: token ${GITHUB_TOKEN}" -X POST \
         -d "{\"body\": \"This apps can now be previewed at the following URL: https://pr-${TRAVIS_PULL_REQUEST}.javascript-getting-started.preview.cogniteapp.com\"}" \
