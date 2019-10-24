@@ -4,7 +4,6 @@ import 'antd/dist/antd.css';
 import './App.css';
 import { CogniteClient, isLoginPopupWindow, loginPopupHandler, POPUP } from '@cognite/sdk';
 import Layout from './Layout';
-import fetchIntercept from 'fetch-intercept';
 
 class App extends Component {
   state = {
@@ -17,13 +16,6 @@ class App extends Component {
       loginPopupHandler();
       return;
     }
-
-    const unregister = fetchIntercept.register({
-      request: function (url, config) {
-          console.log(url, config)
-          return [url, config];
-      }
-    });
   }
 
   onTenantSelected = async tenant => {
