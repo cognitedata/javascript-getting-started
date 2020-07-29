@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>Example apps</title>
+  </head>
+  <body>
+    <h1>Example applications</h1>
+    <div id='appList'></div>
+    <script>
+      //Token replaced by build.sh
+      const apps = ["timeseries-connector-app","hello-gearbox","sdk-auth-and-fetch-data/auth-with-popup","sdk-auth-and-fetch-data/auth-with-redirect","infographic-app","3d-localizator","charting-app","asset-explorer-app"]
+
+      const ul = document.createElement('ul');
+      document.getElementById('appList').appendChild(ul);
+
+      apps.forEach(app => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        const linkText = document.createTextNode(app);
+        a.appendChild(linkText);
+        a.title = app;
+        a.href = app + '/';
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+    </script>
+  </body>
+</html>
