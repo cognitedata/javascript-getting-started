@@ -4,9 +4,9 @@
   "homepage": ".",
   "private": true,
   "dependencies": {
-    "@cognite/gearbox": "^1.0.0",
+    "@cognite/gearbox": "2.0.0-alpha.0",
     "@cognite/griff-react": "^0.5.0-rc.57",
-    "@cognite/sdk": "^2.2.2",
+    "@cognite/sdk": "3.0.0-rc.1",
     "antd": "^3.22.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",

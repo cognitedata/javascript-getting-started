@@ -922,16 +922,15 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@cognite/3d-viewer@^6.0.2":
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/@cognite/3d-viewer/-/3d-viewer-6.0.3.tgz#ed5488eea08375dbdcdeb489a55f961ae347b3a0"
-  integrity sha512-lLaLvwWSzbphbBVyxycnm1Z+rarIA8OitUbCN/3826PovzOAgTkxOtCT4qNVBRszLFeM9mCf2oRKEMAa527FJQ==
+"@cognite/3d-viewer@^6.1.4":
+  version "6.1.4"
+  resolved "https://registry.yarnpkg.com/@cognite/3d-viewer/-/3d-viewer-6.1.4.tgz#19f9fe04d1d82343613d75a7195c492f23c667c6"
+  integrity sha512-2qH4aC7NbxYE+m3st8+c+S69bBzYR/p/ju0WBvIOhZgHX60A2oiwJIUPIrRciWR80d8N73JPhn43ZfVPu4ciaA==
   dependencies:
     "@babel/runtime" "^7.4.4"
-    "@cognite/3d-web-parser" "^0.12.2"
+    "@cognite/3d-web-parser" "^0.13.5"
     "@cognite/three-combo-controls" "^1.4.1"
     "@tweenjs/tween.js" "^17.2.0"
-    idb "^4.0.3"
     is-function "^1.0.1"
     mixpanel-browser "^2.27.1"
     mouse-event-offset "^3.0.2"
@@ -940,21 +939,24 @@
     simple-statistics "^7.0.2"
     three "0.98.0"
 
-"@cognite/3d-web-parser@^0.12.2":
-  version "0.12.4"
-  resolved "https://registry.yarnpkg.com/@cognite/3d-web-parser/-/3d-web-parser-0.12.4.tgz#1ff00f664dcc626da51b4ccb038805bea3c11702"
-  integrity sha512-+fLMlU2tPtJqfKRX9K+m6LiWtKEwMHXB8M2H8//zQPZnOqnl19OohNIz/KDQ4e1BAshXbPRPPmGuVgTjSycxUg==
+"@cognite/3d-web-parser@^0.13.5":
+  version "0.13.5"
+  resolved "https://registry.yarnpkg.com/@cognite/3d-web-parser/-/3d-web-parser-0.13.5.tgz#9c3c47cbf5eeaa73744888bff2d8916cdbf6ff67"
+  integrity sha512-J/7KlOLw8S9vSVvFbElJC6dt6JKs41L425vzXD1XxBw8yT3o2V+wP8AtwUPJ/9k5E+aMAB9qxTZ9O/AE2Yb6gA==
   dependencies:
     protobufjs "^6.8.8"
 
-"@cognite/gearbox@^1.0.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@cognite/gearbox/-/gearbox-1.2.0.tgz#f16bbb576dd87dae658137e07aafe95c092d84a2"
-  integrity sha512-5otDre7CK9QyY4o5D8pxB7XFn+Bnx+SUkiI2byhCX0SI4cxTrKNlQW+pGvGwtWmsVWw5jxPUZZBMZ0p18fpZkA==
+"@cognite/gearbox@2.0.0-alpha.0":
+  version "2.0.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@cognite/gearbox/-/gearbox-2.0.0-alpha.0.tgz#22153a26058283ac0f32f755edccd83e5f58d4fb"
+  integrity sha512-CNQF0p1L/ejO0VYPaNXgBwdIqkbgQswRpiYkmK5YIqMRhEAtHUHJWMAjvSRDBJ1zvfp4ypzB/p+USMYx2fiLMg==
   dependencies:
-    d3 "^5.9.2"
-    lodash "^4.17.11"
-    moment-timezone "^0.5.23"
+    "@types/dompurify" "^2.0.2"
+    d3 "^5.14.2"
+    dompurify "^2.0.11"
+    file-saver "^2.0.2"
+    lodash "^4.17.15"
+    ms "^2.1.2"
     numeral "^2.0.6"
     pinch-zoom-js "^2.3.4"
     react-dnd "^7.4.5"
@@ -963,7 +965,7 @@
     react-sizeme "^2.5.2"
     uuid "^3.3.2"
   optionalDependencies:
-    "@cognite/3d-viewer" "^6.0.2"
+    "@cognite/3d-viewer" "^6.1.4"
 
 "@cognite/griff-react@^0.5.0-rc.57":
   version "0.5.0-rc.57"
@@ -977,15 +979,23 @@
     prop-types "^15.7.2"
     react-sizeme "^2.5.2"
 
-"@cognite/sdk@^2.2.2":
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/@cognite/sdk/-/sdk-2.4.1.tgz#ff42df497d269566086a81ab0cdd9ed5094da1b8"
-  integrity sha512-TL/i3QE6P0okZssLQ+UBFBEY9IIxVkVtjqpp5yQwHmn/9e1s1Z1w/6BxV0RhK2dduXpXWp/5vbLZUjem7c0FFg==
+"@cognite/sdk-core@1.0.0-rc.0":
+  version "1.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/@cognite/sdk-core/-/sdk-core-1.0.0-rc.0.tgz#d94b2cc5658d55ec43f0826784eb2154c802d8d9"
+  integrity sha512-yP8k2PTKPveBBRx8QAVWA97Be3Lu/+NYMkEz58Ry8VIMJdZIL7hOKAopd1JVgafV9EM8GR77lkNmjiFKUzCbrw==
   dependencies:
     cross-fetch "^3.0.4"
     lodash "^4.17.11"
     query-string "^5.1.1"
     url "^0.11.0"
+
+"@cognite/sdk@3.0.0-rc.1":
+  version "3.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@cognite/sdk/-/sdk-3.0.0-rc.1.tgz#40ff45798ff2da14d0c12bd4a692a40861eea8c0"
+  integrity sha512-LGwiwY7sSAYjn+ac7hrLjisohvbGe3geAiSfpd4+ENNqdtJnMpbyGvanxJI2QvBtO7iqKz7OOVjwkozQHMM2ow==
+  dependencies:
+    "@cognite/sdk-core" "1.0.0-rc.0"
+    lodash "^4.17.11"
 
 "@cognite/three-combo-controls@^1.4.1":
   version "1.4.1"
@@ -1406,6 +1416,13 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
+"@types/dompurify@^2.0.2":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@types/dompurify/-/dompurify-2.0.3.tgz#dfd5601d7356dac8adf20ef23fd3a85359604e58"
+  integrity sha512-sK52Cwj9nJh186Tt/My7WzCWsJlJWAtcUig1fp/7s7/T2t4xMgpNHYdgjXlCUsXpmGc1OZWPqUFpZ35o6xs5lQ==
+  dependencies:
+    "@types/trusted-types" "*"
+
 "@types/eslint-visitor-keys@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@types/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#1ee30d79544ca84d68d4b3cdb0af4f205663dd2d"
@@ -1483,6 +1500,11 @@
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
   integrity sha512-l42BggppR6zLmpfU6fq9HEa2oGPEI8yrSPL3GITjfRInppYFahObbIQOQK3UGxEnyQpltZLaPe75046NOZQikw==
+
+"@types/trusted-types@*":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@types/trusted-types/-/trusted-types-1.0.5.tgz#75e9a466fce593ba4494b44737f93cae36215200"
+  integrity sha512-DimWrx+/wJookaDxe9P/SPoL6drQarRrlp3CwtXAWsbHssXNHCZb5RfRRmdUeGOs81XgZMkqHjyfKufEtvFHtA==
 
 "@types/yargs-parser@*":
   version "13.1.0"
@@ -3878,10 +3900,10 @@ d3@4.10.0:
     d3-voronoi "1.1.2"
     d3-zoom "1.5.0"
 
-d3@^5.9.2:
-  version "5.12.0"
-  resolved "https://registry.yarnpkg.com/d3/-/d3-5.12.0.tgz#0ddeac879c28c882317cd439b495290acd59ab61"
-  integrity sha512-flYVMoVuhPFHd9zVCe2BxIszUWqBcd5fvQGMNRmSiBrgdnh6Vlruh60RJQTouAK9xPbOB0plxMvBm4MoyODXNg==
+d3@^5.14.2:
+  version "5.16.0"
+  resolved "https://registry.yarnpkg.com/d3/-/d3-5.16.0.tgz#9c5e8d3b56403c79d4ed42fbd62f6113f199c877"
+  integrity sha512-4PL5hHaHwX4m7Zr1UapXW23apo6pexCgdetdJ5kTmADpG/7T9Gkxw0M0tf/pjoB63ezCCm0u5UaFYy2aMt0Mcw==
   dependencies:
     d3-array "1"
     d3-axis "1"
@@ -4247,6 +4269,11 @@ domhandler@^2.3.0:
   integrity sha512-JiK04h0Ht5u/80fdLMCEmV4zkNh2BcoMFBmZ/91WtYZ8qVXSKjiw7fXMgFPnHcSZgOo3XdinHvmnDUeMf5R4wA==
   dependencies:
     domelementtype "1"
+
+dompurify@^2.0.11:
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-2.0.12.tgz#284a2b041e1c60b8e72d7b4d2fadad36141254ae"
+  integrity sha512-Fl8KseK1imyhErHypFPA8qpq9gPzlsJ/EukA6yk9o0gX23p1TzC+rh9LqNg1qvErRTc0UNMYlKxEGSfSh43NDg==
 
 domutils@1.5.1:
   version "1.5.1"
@@ -4958,6 +4985,11 @@ file-loader@3.0.1:
     loader-utils "^1.0.2"
     schema-utils "^1.0.0"
 
+file-saver@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/file-saver/-/file-saver-2.0.2.tgz#06d6e728a9ea2df2cce2f8d9e84dfcdc338ec17a"
+  integrity sha512-Wz3c3XQ5xroCxd1G8b7yL0Ehkf0TC9oYC6buPFkNnU9EnaPlifeAFCyCh+iewXTyFRcg0a6j3J7FmJsIhlhBdw==
+
 filesize@3.6.1:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/filesize/-/filesize-3.6.1.tgz#090bb3ee01b6f801a8a8be99d31710b3422bb317"
@@ -5659,11 +5691,6 @@ icss-utils@^4.1.0:
   integrity sha512-4aFq7wvWyMHKgxsH8QQtGpvbASCf+eM3wPRLI6R+MgAnTCZ6STYsRvttLvRWK0Nfif5piF394St3HeJDaljGPA==
   dependencies:
     postcss "^7.0.14"
-
-idb@^4.0.3:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/idb/-/idb-4.0.4.tgz#f0c06f58bd78fe557e4de944fd6ba6a3240faa8e"
-  integrity sha512-ZYsaBSNub2yAnjvmRKudQlMIPqZQIefAOwNIPeXC+RLIeXYFc0UNQqONKNuQeBNf8oBOV5L75yJ9zFISjHVj4g==
 
 identity-obj-proxy@3.0.0:
   version "3.0.0"
@@ -7358,14 +7385,7 @@ mkdirp@0.5.1, mkdirp@0.5.x, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.1:
   dependencies:
     minimist "0.0.8"
 
-moment-timezone@^0.5.23:
-  version "0.5.26"
-  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.26.tgz#c0267ca09ae84631aa3dc33f65bedbe6e8e0d772"
-  integrity sha512-sFP4cgEKTCymBBKgoxZjYzlSovC20Y6J7y3nanDc5RoBIXKlZhoYwBoZGe3flwU6A372AcRwScH8KiwV6zjy1g==
-  dependencies:
-    moment ">= 2.9.0"
-
-moment@2.x, "moment@>= 2.9.0", moment@^2.24.0:
+moment@2.x, moment@^2.24.0:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
@@ -7397,7 +7417,7 @@ ms@2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
   integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
 
-ms@^2.1.1:
+ms@^2.1.1, ms@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
