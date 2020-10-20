@@ -39,7 +39,7 @@ There are two ways to log in the user:
 Here we will show you how to do both. Let's start with using login with redirect.
 ### Authentication with redirect
 You can just replace the code in <code>./src/App.js:</code>  
-```
+```jsx
 import React, { Component } from 'react';
 import { CogniteClient } from '@cognite/sdk';
 
@@ -73,7 +73,7 @@ You should now be able to login to the project `publicdata`.
 
 When we have authenticated the SDK we are ready to fetch data with it. In this guide, we will fetch 10 assets. Worth to mention that usage of `client.authenticate()` is reduntant here, as the SDK will call it automatically on API request. That's why we removed it from the code below.   
 <code>./src/App.js:</code>  
-```
+```jsx
 import React, { Component } from 'react';
 import { CogniteClient } from '@cognite/sdk';
 
@@ -102,7 +102,7 @@ export default App;
 Let us move on to visualize the assets we just fetched. 
 We will do it very basic this time, and only print out the asset names.  
 <code>./src/App.js:</code>  
-```
+```jsx
 import React, { Component } from 'react';
 import { CogniteClient } from '@cognite/sdk';
 
@@ -143,7 +143,7 @@ As was mentioned above, it is possible to authenticate the SDK without performin
 The benefit of using this solution is that you don’t lose the state of the application.
 Let's change our code to use a popup window. We'll also do some refactoring, so it looks more readable and add a button, so we can call the popup on user interaction to avoid having the popup-window blocked by the browser.  
 <code>./src/App.js:</code>  
-```
+```jsx
 import React, { Component } from 'react';
 import { CogniteClient, POPUP, loginPopupHandler, isLoginPopupWindow } from '@cognite/sdk';
 
